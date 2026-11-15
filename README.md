@@ -1,4 +1,5 @@
 # nys-child-support-portal
+
 NYS DCSS – Application Modernization Project
 
 Child & Family Services Case Management System
@@ -840,3 +841,695 @@ The project will demonstrate the complete software development lifecycle, from b
 Primary Development Focus: Java 17, Spring Boot, REST APIs, Spring Security, JPA/Hibernate, PostgreSQL, and Angular.
 
 Advanced Implementation: Kafka, Microservices, Docker, Kubernetes, Jenkins, and AWS.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legacy Application Modernization – Child & Family Services Case Management System
+
+1. Project Overview
+
+This project demonstrates the modernization of a traditional monolithic enterprise application into a modern, scalable, and maintainable application using Java, Spring Boot, Angular, and cloud-native technologies.
+
+The application is inspired by child and family services case-management business processes. It represents an educational modernization project and is not an official State of New York application or a reproduction of any government production system.
+
+The original application is assumed to be built using a traditional monolithic architecture with Java, Spring MVC, JSP, Hibernate, and Oracle Database.
+
+The modernization effort focuses on migrating legacy functionality into modular Spring Boot components, exposing REST APIs, modernizing the frontend, improving security, and gradually transitioning selected business capabilities into independent microservices.
+
+Primary Objectives
+
+* Modernize legacy Java applications using Java 17 and Spring Boot.
+* Transform tightly coupled business functionality into modular components.
+* Replace JSP-based interfaces with Angular.
+* Develop reusable RESTful APIs.
+* Modernize database access using Spring Data JPA and Hibernate.
+* Implement authentication and role-based authorization.
+* Introduce event-driven communication using Apache Kafka.
+* Containerize applications using Docker.
+* Deploy and orchestrate applications using Kubernetes.
+* Implement automated CI/CD pipelines using Jenkins.
+* Improve application maintainability, scalability, security, and reliability.
+
+⸻
+
+2. Legacy Architecture
+
+The original application follows a traditional monolithic architecture.
+
+Legacy Technology Stack
+
+Layer	Technology
+Programming Language	Java 8
+Backend Framework	Spring MVC
+Frontend	JSP, HTML, CSS, JavaScript
+Persistence	Hibernate
+Database	Oracle
+Application Server	Traditional Java application server
+Integration	Point-to-point integrations
+Deployment	Traditional application deployment
+
+Legacy Architecture Diagram
+
+                  Legacy Web Application
+                           |
+          -------------------------------------
+          |                 |                 |
+          v                 v                 v
+    Person Module      Case Module      Investigation
+                                            Module
+          |                 |                 |
+          -------------------------------------
+                           |
+                     Business Logic
+                           |
+                     Data Access
+                           |
+                       Hibernate
+                           |
+                       Oracle DB
+
+Legacy Architecture Challenges
+
+* Tightly coupled business modules.
+* Difficult application maintenance.
+* Changes to one module can affect other modules.
+* Entire application deployment required for individual functionality changes.
+* Limited independent scalability.
+* Complex regression testing.
+* Difficult integration with modern enterprise systems.
+
+⸻
+
+3. Modernized Technology Stack
+
+The application is being modernized using a modern Java full-stack technology ecosystem.
+
+Layer	Legacy Technology	Modern Technology
+Programming Language	Java 8	Java 17
+Backend Framework	Spring MVC	Spring Boot
+Frontend	JSP	Angular
+API Communication	Traditional server-side calls	REST APIs
+Persistence	Hibernate	Spring Data JPA / Hibernate
+Database	Oracle	PostgreSQL
+Security	Traditional authentication	Spring Security and JWT
+Integration	Point-to-point	REST APIs and Apache Kafka
+Containerization	Traditional deployment	Docker
+Orchestration	Traditional application server	Kubernetes
+CI/CD	Manual deployment	Jenkins
+Cloud Infrastructure	Traditional infrastructure	AWS
+
+⸻
+
+4. Target Architecture
+
+The modernization strategy begins with a modular Spring Boot application and gradually evolves toward a microservices-based architecture.
+
+High-Level Architecture
+
+                     Angular Frontend
+                            |
+                            v
+                       API Gateway
+                            |
+                            v
+                    Spring Security / JWT
+                            |
+          -----------------------------------------
+          |                  |                    |
+          v                  v                    v
+     Person Module      Case Module         Intake Module
+          |                  |                    |
+          -----------------------------------------
+                            |
+                            v
+                      PostgreSQL DB
+                            |
+                            v
+                       Apache Kafka
+                            |
+                            v
+                  Notification Service
+          -----------------------------------------
+          |                                       |
+          v                                       v
+    Document Service                       Reporting Service
+          |                                       |
+          v                                       v
+        AWS S3                              Reporting Data
+
+Note: This is the intended target architecture. The initial implementation will use a modular monolith before extracting selected capabilities into independently deployable microservices.
+
+Architecture Principles
+
+* Separation of concerns.
+* Layered application architecture.
+* Modular business capabilities.
+* RESTful API development.
+* Centralized authentication and authorization.
+* Event-driven communication.
+* Independent deployment of extracted services.
+* Containerized application deployment.
+* Automated build, test, and deployment pipelines.
+
+⸻
+
+5. Business Modules and Functionalities
+
+The application will contain the following business capabilities.
+
+5.1 User Management
+
+* Create and manage users.
+* Maintain user profiles.
+* Assign application roles.
+* Activate and deactivate users.
+* Manage user access.
+
+5.2 Person and Family Management
+
+* Register individuals.
+* Maintain personal information.
+* Search individuals.
+* Manage contact information.
+* Maintain family relationships.
+* Identify potential duplicate records.
+* View person history.
+
+5.3 Case Management
+
+* Create and update cases.
+* Search and retrieve cases.
+* Assign cases to caseworkers.
+* Transfer case ownership.
+* Maintain case status.
+* Record case notes.
+* Track case history.
+* Close and reopen cases.
+
+5.4 Intake and Investigation
+
+* Create intake records.
+* Capture incoming reports.
+* Search existing family information.
+* Perform preliminary screening.
+* Assign investigations.
+* Record investigation findings.
+* Maintain investigation outcomes.
+
+5.5 Foster Care and Placement
+
+* Maintain foster home information.
+* Manage foster parent details.
+* Track placement availability.
+* Record placement information.
+* Track placement history.
+* Manage placement changes.
+
+5.6 Health and Well-Being
+
+* Maintain health records.
+* Record appointments.
+* Track assessments.
+* Maintain progress notes.
+* Record referrals and follow-ups.
+
+5.7 Document Management
+
+* Upload documents.
+* Download documents.
+* Maintain document metadata.
+* Categorize documents.
+* Track document versions.
+* Manage document access.
+
+5.8 Notification Management
+
+* Generate application notifications.
+* Notify users about case assignments.
+* Notify users about case updates.
+* Process asynchronous events using Kafka.
+* Implement retry and dead-letter handling.
+
+5.9 Reporting and Dashboard
+
+* Display application statistics.
+* Generate case reports.
+* Generate assignment reports.
+* Filter reports by date and status.
+* Provide dashboard summaries.
+
+5.10 Audit and Logging
+
+* Track user activities.
+* Maintain case history.
+* Record important application events.
+* Track security-related activities.
+* Support application troubleshooting.
+
+⸻
+
+6. Backend Architecture
+
+The backend will follow a layered architecture.
+
+                    Client Request
+                          |
+                          v
+                    REST Controller
+                          |
+                          v
+                     Service Layer
+                          |
+                          v
+                    Repository Layer
+                          |
+                          v
+                     JPA / Hibernate
+                          |
+                          v
+                     PostgreSQL
+
+Package Structure
+
+com.nys.dcss.casemanagement
+│
+├── config
+│
+├── controller
+│
+├── service
+│   └── impl
+│
+├── repository
+│
+├── entity
+│
+├── dto
+│
+├── mapper
+│
+├── exception
+│
+├── security
+│
+├── validation
+│
+└── DcssCaseManagementApplication.java
+
+Package Responsibilities
+
+Package	Responsibility
+controller	REST API endpoints
+service	Business service interfaces
+service.impl	Business logic implementation
+repository	Database operations
+entity	JPA entities
+dto	Request and response objects
+mapper	Entity and DTO conversion
+exception	Global exception handling
+config	Application configuration
+security	Authentication and authorization
+validation	Request validation
+
+⸻
+
+7. Database Design
+
+Database
+
+PostgreSQL
+
+Initial Database Tables
+
+Table	Purpose
+users	Application users
+roles	Application roles
+user_roles	User-role mapping
+persons	Individual information
+family_relationships	Family relationships
+cases	Case information
+case_assignments	Caseworker assignments
+case_notes	Case notes
+case_history	Case status and activity history
+intakes	Intake records
+investigations	Investigation records
+foster_homes	Foster home information
+placements	Placement information
+health_records	Health-related records
+documents	Document metadata
+notifications	Application notifications
+audit_logs	User activity records
+
+Database schema changes will eventually be managed using Flyway migrations.
+
+⸻
+
+8. REST API Design
+
+All REST endpoints will follow a versioned API convention.
+
+Base URL:
+
+/api/v1
+
+Person Management APIs
+
+HTTP Method	Endpoint	Description
+POST	/api/v1/persons	Create person
+GET	/api/v1/persons/{id}	Retrieve person
+GET	/api/v1/persons	Retrieve all persons
+PUT	/api/v1/persons/{id}	Update person
+DELETE	/api/v1/persons/{id}	Deactivate person
+
+Case Management APIs
+
+HTTP Method	Endpoint	Description
+POST	/api/v1/cases	Create case
+GET	/api/v1/cases/{id}	Retrieve case
+GET	/api/v1/cases	Retrieve cases
+PUT	/api/v1/cases/{id}	Update case
+PATCH	/api/v1/cases/{id}/status	Update case status
+POST	/api/v1/cases/{id}/assign	Assign case
+GET	/api/v1/cases/{id}/history	Retrieve case history
+
+Additional APIs will be implemented as the project evolves.
+
+⸻
+
+9. Security Architecture
+
+Security will be implemented using Spring Security and JWT.
+
+Planned Features
+
+* User authentication.
+* JWT token generation and validation.
+* Role-based access control.
+* Password encryption using BCrypt.
+* Endpoint-level authorization.
+* Method-level authorization.
+* Secure API access.
+* Centralized exception handling.
+
+Application Roles
+
+Role	Access
+ADMIN	Application administration
+SUPERVISOR	Manage teams and cases
+CASEWORKER	Manage assigned cases
+INVESTIGATOR	Manage investigation activities
+READ_ONLY	View authorized information
+
+⸻
+
+10. Event-Driven Architecture
+
+Apache Kafka will support asynchronous communication between business capabilities.
+
+Example: Case Update Notification
+
+                Case Service
+                     |
+                     v
+              Update Case Status
+                     |
+                     v
+               Kafka Producer
+                     |
+                     v
+              Case Updated Event
+                     |
+                     v
+                Kafka Topic
+                     |
+                     v
+             Notification Service
+                     |
+                     v
+              Process Notification
+
+Planned Kafka concepts:
+
+* Producers and consumers.
+* Topics and partitions.
+* Consumer groups.
+* Event serialization.
+* Retry mechanisms.
+* Dead-letter topics.
+* Idempotent event processing.
+
+⸻
+
+11. Frontend Architecture
+
+The frontend will be developed using Angular and TypeScript.
+
+Planned Angular Modules
+
+src/app/
+│
+├── core/
+├── shared/
+│
+├── features/
+│   ├── authentication/
+│   ├── dashboard/
+│   ├── persons/
+│   ├── cases/
+│   ├── intake/
+│   ├── investigations/
+│   ├── placements/
+│   ├── reports/
+│   └── administration/
+│
+├── services/
+│
+└── app.routes.ts
+
+Frontend Features
+
+* Login and authentication.
+* Dashboard.
+* Person search and registration.
+* Case creation and management.
+* Case assignment.
+* Intake and investigation screens.
+* Reporting.
+* User administration.
+
+Angular will communicate with backend services through REST APIs.
+
+⸻
+
+12. Testing Strategy
+
+Testing will be implemented at multiple levels.
+
+Testing Type	Technology
+Unit Testing	JUnit 5
+Mocking	Mockito
+Controller Testing	MockMvc
+Integration Testing	Spring Boot Test
+Database Testing	Testcontainers
+API Testing	REST Assured / Postman
+Frontend Testing	Angular testing tools
+Code Quality	SonarQube
+
+⸻
+
+13. DevOps and Deployment
+
+Containerization
+
+Docker will be used to package Spring Boot applications.
+
+Orchestration
+
+Kubernetes will manage:
+
+* Application deployments.
+* Replicas.
+* Services.
+* ConfigMaps and Secrets.
+* Health checks.
+* Scaling.
+
+CI/CD Pipeline
+
+Jenkins will automate the build and deployment process.
+
+       Developer
+           |
+           v
+       Git Commit
+           |
+           v
+        Jenkins
+           |
+           v
+       Maven Build
+           |
+           v
+      Unit Testing
+           |
+           v
+      SonarQube
+           |
+           v
+      Docker Build
+           |
+           v
+     Container Registry
+           |
+           v
+      Kubernetes
+           |
+           v
+       Deployment
+
+AWS Services
+
+* EC2
+* EKS
+* S3
+* RDS
+* IAM
+* CloudWatch
+
+⸻
+
+14. Development Roadmap
+
+The project will be developed incrementally.
+
+Phase	Implementation
+1	Spring Boot project setup
+2	PostgreSQL database configuration
+3	Person Management
+4	Case Management
+5	Case Assignment and Workflow
+6	Intake Management
+7	Investigation Management
+8	Foster Care and Placement
+9	Health and Well-Being
+10	Spring Security and JWT
+11	Audit Logging
+12	Kafka Integration
+13	Document Management
+14	Reporting and Dashboard
+15	Angular Frontend
+16	Unit and Integration Testing
+17	Microservices Extraction
+18	Docker and Kubernetes
+19	Jenkins CI/CD and AWS Deployment
+
+⸻
+
+15. Local Development Setup
+
+Prerequisites
+
+Install the following:
+
+* Java 17
+* IntelliJ IDEA
+* Maven
+* PostgreSQL
+* Git
+* Docker Desktop
+* Node.js
+* Angular CLI
+* Postman
+
+Step 1: Create the Database
+
+CREATE DATABASE dcss_db;
+
+Step 2: Configure application.properties
+
+spring.application.name=dcss-case-management
+server.port=8080
+spring.datasource.url=jdbc:postgresql://localhost:5432/dcss_db
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+Step 3: Build the Application
+
+mvn clean install
+
+Step 4: Run the Application
+
+mvn spring-boot:run
+
+Backend application:
+
+http://localhost:8080
+
+⸻
+
+16. Git Branching Strategy
+
+The project will follow a feature-based branching approach.
+
+main
+  |
+  └── develop
+        |
+        ├── feature/person-management
+        ├── feature/case-management
+        ├── feature/intake-management
+        ├── feature/security
+        └── feature/kafka-integration
+
+Changes will be developed in feature branches and merged into the development branch after review and testing.
+
+⸻
+
+17. Development Standards
+
+* Follow Java coding conventions.
+* Use meaningful class and method names.
+* Follow SOLID principles.
+* Maintain separation of concerns.
+* Use DTOs for API communication.
+* Implement centralized exception handling.
+* Validate incoming requests.
+* Write unit and integration tests.
+* Avoid hardcoded credentials.
+* Document REST APIs.
+* Use Git for source control.
+* Follow secure coding practices.
+
+⸻
+
+18. Learning and Project Objectives
+
+This project provides hands-on experience with:
+
+* Java 17 and modern Java features.
+* Spring Framework and Spring Boot.
+* Spring MVC and REST APIs.
+* Dependency Injection and Inversion of Control.
+* Spring Data JPA and Hibernate.
+* PostgreSQL and SQL.
+* Spring Security and JWT.
+* Microservices architecture.
+* Apache Kafka.
+* Angular and TypeScript.
+* JUnit and Mockito.
+* Docker and Kubernetes.
+* Jenkins CI/CD.
+* AWS cloud services.
+* Enterprise application modernization.
+
+⸻
+
+19. Final Project Goal
+
+The final goal is to demonstrate an end-to-end enterprise application modernization journey.
+
+Starting from a traditional monolithic application, the project will progressively introduce modern Java technologies, modular architecture, RESTful communication, event-driven integration, frontend modernization, automated testing, containerization, and cloud deployment.
+
+The result will be a practical full-stack project demonstrating the skills required to design, develop, modernize, test, and deploy enterprise Java applications.
