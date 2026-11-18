@@ -1,4 +1,4 @@
-package com.nys.dcss.dcss_case_management;
+package com.nys.dcss.casemanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
